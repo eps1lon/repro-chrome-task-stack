@@ -8,6 +8,7 @@ With MacOS Chrome Version 144.0.7559.60 (Official Build) (arm64)
 
 1. Go to https://repro-chrome-task-stack.vercel.app/
 1. Open Chrome DevTools Performance tab
+1. Start recording
 1. Click both buttons
 
 See [reproduction recording](./repro-steps.mp4).
