@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>console.createTask + Chrome's performance tracks</title>
+  </head>
+  <body>
+    <button id="task-run-bound">
+      task.run(console.timeStamp.bind(console, ...))
+    </button>
+    <button id="task-run-closure">
+      task.run(() => console.timeStamp(...))
+    </button>
+    <script type="text/javascript">
+      document
+        .getElementById("task-run-bound")
+        .addEventListener("click", () => {
+          const task = console.createTask("My Task");
+          const start = performance.now();
+          task.run(
+            console.timeStamp.bind(
+              console,
+              "bound",
+              start,
+              start + 100,
+              "Components ⚛",
+              "primary"
+            )
+          );
+        });
+
+      document
+        .getElementById("task-run-closure")
+        .addEventListener("click", () => {
+          const task = console.createTask("My Task");
+          const start = performance.now();
+          task.run(() =>
+            console.timeStamp(
+              "closure",
+              start,
+              start + 100,
+              "Components ⚛",
+              "primary"
+            )
+          );
+        });
+    </script>
+  </body>
+</html>
